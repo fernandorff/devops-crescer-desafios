@@ -11,7 +11,7 @@ docker build -t "nome"/"nomeDaAplicacao":"tag" .
 - Rodar imagem na porta 9320
 
 ```
-docker run -p 9320:9320 "nome"/"nomeDaAplicacao":"tag"
+docker run -p 9320:8080 "nome"/"nomeDaAplicacao":"tag"
 ```
 
 ## Métodos
