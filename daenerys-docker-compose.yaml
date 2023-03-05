@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 
 services:
 
@@ -6,14 +6,12 @@ services:
     image: mysql:8.0
     restart: always
     environment:
-      MYSQL_DATABASE: mydb
-      MYSQL_ROOT_PASSWORD: meusecret123
+      - MYSQL_DATABASE=mydb
+      - MYSQL_ROOT_PASSWORD=meusecret123
     volumes:
       - db-data:/var/lib/mysql
     ports:
       - 3306:3306
-    networks:
-      - app-network
 
   webserver:
     image: nginx:alpine
@@ -24,26 +22,19 @@ services:
     ports:
       - 80:80
       - 443:443
-    networks:
-      - app-network
 
   wordpress:
     image: wordpress:5.1.1-fpm-alpine
     restart: always
     environment:
-      WORDPRESS_DB_HOST: mysql-db:3306
-      WORDPRESS_DB_USER: admin
-      WORDPRESS_DB_PASSWORD: aquelasenhatop
-      WORDPRESS_DB_NAME: mydb
+      - WORDPRESS_DB_HOST=mysql-db:3306
+      - WORDPRESS_DB_USER=admin
+      - WORDPRESS_DB_PASSWORD=aquelasenhatop
+      - WORDPRESS_DB_NAME=mydb
     volumes:
       - wordpress:/var/www/html
-    networks:
-      - app-network
 
 volumes:
   db-data:
   wordpress:
   nginx:
-
-networks:
-  app-network:
