@@ -72,7 +72,7 @@ class IncluirUsuarioServiceTest {
 
     @Test
     @DisplayName("Não deve incluir usuario se existir outro usuario com o mesmo email")
-    void deveRetornarErroParaEmailDuplicado() {
+    void deveRetornarErroParaTituloDuplicado() {
 
         UsuarioRequest request = new UsuarioRequest();
         request.setEmail("teste@cwi.com.br");

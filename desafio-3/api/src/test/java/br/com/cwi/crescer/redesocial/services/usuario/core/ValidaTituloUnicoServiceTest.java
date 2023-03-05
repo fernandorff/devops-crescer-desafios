@@ -17,7 +17,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.web.server.ResponseStatusException;
 
 @ExtendWith(MockitoExtension.class)
-class ValidaEmailUnicoServiceTest {
+class ValidaTituloUnicoServiceTest {
 
     @InjectMocks
     private ValidaEmailUnicoService tested;

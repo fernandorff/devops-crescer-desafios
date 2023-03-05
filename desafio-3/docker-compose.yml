@@ -1,0 +1,51 @@
+version: "3.8"
+
+services:
+  redesocial-postgres:
+    image: postgres:latest
+    container_name: redesocial-db
+    environment:
+      - POSTGRES_USER=redesocial
+      - POSTGRES_PASSWORD=redesocial
+      - POSTGRES_DB=redesocial
+    volumes:
+      - ./api/data/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+      - redesocial_postgres_data:/var/lib/redesocial-postgres/data
+    ports:
+      - "5432:5432"
+    networks:
+      - redesocial
+
+  redesocial-back-end:
+    container_name: redesocial-back-end
+    image: redesocial-back-end:latest
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    environment:
+      - spring.datasource.url=jdbc:postgresql://redesocial-postgres:5432/redesocial
+      - spring.datasource.username=redesocial
+      - spring.datasource.password=redesocial
+    ports:
+      - "8080:8080"
+    networks:
+      - redesocial
+    depends_on:
+      - redesocial-postgres
+
+  redesocial-front-end:
+    container_name: redesocial-front-end
+    image: redesocial-front-end:latest
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    networks:
+      - redesocial
+
+volumes:
+  redesocial_postgres_data:
+
+networks:
+  redesocial:

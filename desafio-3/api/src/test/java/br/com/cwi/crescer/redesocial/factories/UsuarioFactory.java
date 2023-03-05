@@ -8,9 +8,9 @@ public class UsuarioFactory {
     public static Usuario get() {
         Usuario usuario = new Usuario();
         usuario.setId(SimpleFactory.getRandomLong());
-        usuario.setNomeCompleto("Usuário de teste get");
+        usuario.setNomeCompleto("Usuário de teste");
         usuario.setEmail("teste@cwi.com.br");
-        usuario.setApelido("teste get");
+        usuario.setApelido("testinho");
         usuario.setDataNascimento(LocalDate.of(1989, 2, 15));
         return usuario;
     }
@@ -18,20 +18,9 @@ public class UsuarioFactory {
     public static Usuario getOther() {
         Usuario usuario = new Usuario();
         usuario.setId(SimpleFactory.getRandomLong());
-        usuario.setNomeCompleto("Usuário de teste getOther");
+        usuario.setNomeCompleto("Usuário de teste 2");
         usuario.setEmail("teste2@cwi.com.br");
-        usuario.setApelido("teste getOther");
-        usuario.setDataNascimento(LocalDate.of(1992, 2, 15));
-        return usuario;
-    }
-
-    public static Usuario getDesativado() {
-        Usuario usuario = new Usuario();
-        usuario.setId(SimpleFactory.getRandomLong());
-        usuario.setNomeCompleto("Usuário de teste desativado");
-        usuario.setEmail("testedesativado@cwi.com.br");
-        usuario.setApelido("usuario desativado");
-        usuario.setAtivo(false);
+        usuario.setApelido("testonho");
         usuario.setDataNascimento(LocalDate.of(1992, 2, 15));
         return usuario;
     }

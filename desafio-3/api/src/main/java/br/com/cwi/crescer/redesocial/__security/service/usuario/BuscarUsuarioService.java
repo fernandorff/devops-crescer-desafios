@@ -17,6 +17,6 @@ public class BuscarUsuarioService {
 
         return usuarioRepository.findById(usuarioId)
             .orElseThrow(
-                () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuário não encontrado"));
+                () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario nao encontrado."));
     }
 }
